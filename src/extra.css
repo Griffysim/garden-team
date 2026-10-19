@@ -1,0 +1,28 @@
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.tabs button{padding:10px 14px;border-radius:999px;border:1px solid #d4d1ca;background:#fff;font-weight:600;min-height:44px}
+.tabs button.on{background:#2f6b3a;color:#fff;border-color:#2f6b3a}
+.guide-sec{background:#fff;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.guide-sec h3{margin:0 0 8px}
+.guide-sec p{margin:6px 0;line-height:1.55}
+.guide-sec ul,.guide-sec ol{margin:6px 0 6px 20px;line-height:1.6}
+.guide-note{background:#fff4d6;border-radius:10px;padding:12px;margin-bottom:14px;font-weight:600}
+.guide-table{width:100%;border-collapse:collapse;font-size:14px;overflow-x:auto;display:block}
+.guide-table th,.guide-table td{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top}
+.guide-table th{background:#f1efe9}
+.cal-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.cal-bar select,.cal-bar button{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid #d4d1ca;background:#fff}
+.cal-bar button.on{background:#2f6b3a;color:#fff}
+.cal-title{font-weight:700;font-size:18px;flex:1;min-width:140px;text-align:center}
+.cal-month{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{font-size:12px;font-weight:700;text-align:center;color:#666}
+.cal-cell{background:#fff;border-radius:8px;min-height:84px;padding:4px;font-size:12px;border:1px solid #e6e4df;text-align:left;overflow:hidden}
+.cal-cell.out{opacity:.45}.cal-cell.today{border:2px solid #2f6b3a}
+.cal-cell b{display:block;margin-bottom:2px}
+.cal-chip{display:block;border-radius:4px;padding:1px 4px;margin-top:2px;background:#e4efe6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-chip.done{background:#ddd;text-decoration:line-through}.cal-chip.urgent,.cal-chip.high{background:#f6d9d3}
+.cal-week{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cal-day{background:#fff;border-radius:10px;padding:10px;border:1px solid #e6e4df}
+.cal-day.today{border:2px solid #2f6b3a}
+.cal-item{border-top:1px solid #eee;padding:8px 0;font-size:14px}
+.cal-item small{display:block;color:#666}
+@media(max-width:600px){.cal-cell{min-height:60px;font-size:11px}.cal-chip{font-size:10px}}
