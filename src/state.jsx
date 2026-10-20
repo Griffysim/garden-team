@@ -13,7 +13,7 @@ export function AppProvider({children}){
  },[token])
  const refresh=useCallback(async()=>{ if(!token)return;setLoading(true);try{setData(await api('/bootstrap'))}catch(e){setNotice({type:'error',text:e.message})}finally{setLoading(false)}},[api,token])
  useEffect(()=>{refresh()},[refresh])
- const login=async(email,password)=>{const out=await api('/auth/login',{method:'POST',body:JSON.stringify({email,password})});setToken(out.token);setUser(out.user);localStorage.setItem('garden_token',out.token);localStorage.setItem('garden_user',JSON.stringify(out.user))}
+ const login=async(email,password)=>{setLoading(true);try{const out=await api('/auth/login',{method:'POST',body:JSON.stringify({email,password})});setToken(out.token);setUser(out.user);localStorage.setItem('garden_token',out.token);localStorage.setItem('garden_user',JSON.stringify(out.user))}catch(error){setLoading(false);throw error}}
  const logout=()=>{setToken('');setUser(null);setData(null);localStorage.removeItem('garden_token');localStorage.removeItem('garden_user')}
  const act=async(path,options,success='Saved')=>{try{await api(path,options);setNotice({type:'success',text:success});await refresh();return true}catch(e){setNotice({type:'error',text:e.message});return false}}
  const value=useMemo(()=>({token,user,data,loading,notice,setNotice,api,refresh,login,logout,act,canManage:['supervisor','owner'].includes(user?.role)}),[token,user,data,loading,notice,api,refresh])
