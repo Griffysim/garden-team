@@ -8,6 +8,7 @@ export const Empty=({text='Nothing recorded yet.'})=><div className="empty">{tex
 export const Modal=({title,onClose,children})=><div className="modal-bg" onMouseDown={e=>e.target===e.currentTarget&&onClose()}><div className="modal"><div className="modal-head"><h2>{title}</h2><button className="icon-btn" onClick={onClose}>×</button></div>{children}</div></div>
 export function Notice(){const{notice,setNotice}=useApp();useEffect(()=>{if(!notice)return;const t=setTimeout(()=>setNotice(null),4000);return()=>clearTimeout(t)},[notice,setNotice]);return notice?<div className={'notice '+notice.type}>{notice.text}</div>:null}
 export const Spinner=()=> <div className="spinner-wrap"><div className="spinner"/><p>Loading the garden records…</p></div>
-export const fmtDate=v=>v?new Intl.DateTimeFormat('en-ZA',{dateStyle:'medium'}).format(new Date(v+'T00:00:00')):'—'
-export const fmtTime=v=>v?new Intl.DateTimeFormat('en-ZA',{dateStyle:'medium',timeStyle:'short'}).format(new Date(v)):'—'
+const parsedDate=v=>{if(!v)return null;const raw=String(v),date=/^\d{4}-\d{2}-\d{2}$/.test(raw)?new Date(raw+'T00:00:00'):new Date(raw);return Number.isNaN(date.getTime())?null:date}
+export const fmtDate=v=>{const date=parsedDate(v);return date?new Intl.DateTimeFormat('en-ZA',{dateStyle:'medium'}).format(date):'—'}
+export const fmtTime=v=>{const date=parsedDate(v);return date?new Intl.DateTimeFormat('en-ZA',{dateStyle:'medium',timeStyle:'short'}).format(date):'—'}
 export const today=()=>new Date().toISOString().slice(0,10)
